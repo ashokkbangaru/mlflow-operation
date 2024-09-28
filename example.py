@@ -17,6 +17,8 @@ import mlflow
 import mlflow.sklearn
 from mlflow.models import infer_signature
 
+import dagshub
+
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
@@ -55,6 +57,8 @@ if __name__ == "__main__":
     alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
+    dagshub.init(repo_owner='ashokk.bangaru', repo_name='mlflow-operation', mlflow=True)
+
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
         lr.fit(train_x, train_y)
@@ -74,9 +78,10 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
-        predictions = lr.predict(train_x)
-        signature = infer_signature(train_x, predictions)
+        #predictions = lr.predict(train_x)
+        #signature = infer_signature(train_x, predictions)
 
+        """
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         # Model registry does not work with file store
@@ -86,7 +91,6 @@ if __name__ == "__main__":
             # please refer to the doc for more information:
             # https://mlflow.org/docs/latest/model-registry.html#api-workflow
             mlflow.sklearn.log_model(
-                lr, "model", registered_model_name="ElasticnetWineModel", signature=signature
-            )
+                lr, "model", registered_model_name="ElasticnetWineModel")
         else:
-            mlflow.sklearn.log_model(lr, "model", signature=signature)
+            mlflow.sklearn.log_model(lr, "model") """
