@@ -78,6 +78,8 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
+        mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
+
         #predictions = lr.predict(train_x)
         #signature = infer_signature(train_x, predictions)
 
