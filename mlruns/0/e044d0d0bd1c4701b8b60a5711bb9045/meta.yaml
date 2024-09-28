@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Projects/ml_flow_test/mlruns/0/e044d0d0bd1c4701b8b60a5711bb9045/artifacts
+end_time: 1727538696225
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e044d0d0bd1c4701b8b60a5711bb9045
+run_name: sincere-shrew-797
+run_uuid: e044d0d0bd1c4701b8b60a5711bb9045
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727538686721
+status: 3
+tags: []
+user_id: banas

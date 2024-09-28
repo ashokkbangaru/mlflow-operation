@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Projects/ml_flow_test/mlruns/0/a5f44b3a6d3e490182ba587d53ea3ea2/artifacts
+end_time: 1727538965357
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a5f44b3a6d3e490182ba587d53ea3ea2
+run_name: rare-shoat-86
+run_uuid: a5f44b3a6d3e490182ba587d53ea3ea2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727538955798
+status: 3
+tags: []
+user_id: banas
