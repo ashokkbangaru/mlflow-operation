@@ -17,7 +17,7 @@ import mlflow
 import mlflow.sklearn
 from mlflow.models import infer_signature
 
-import dagshub
+#import dagshub
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
@@ -33,6 +33,9 @@ def eval_metrics(actual, pred):
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
+
+    remote_server_uri = "http://ec2-54-93-229-40.eu-central-1.compute.amazonaws.com:5000/"
+    mlflow.set_tracking_uri(remote_server_uri)
 
     # Read the wine-quality csv file from the URL
     csv_url = (
@@ -57,7 +60,7 @@ if __name__ == "__main__":
     alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
-    dagshub.init(repo_owner='ashokk.bangaru', repo_name='mlflow-operation', mlflow=True)
+    #dagshub.init(repo_owner='ashokk.bangaru', repo_name='mlflow-operation', mlflow=True)
 
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
@@ -78,12 +81,11 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
-        mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
+        #mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
 
         #predictions = lr.predict(train_x)
         #signature = infer_signature(train_x, predictions)
 
-        """
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         # Model registry does not work with file store
@@ -95,4 +97,4 @@ if __name__ == "__main__":
             mlflow.sklearn.log_model(
                 lr, "model", registered_model_name="ElasticnetWineModel")
         else:
-            mlflow.sklearn.log_model(lr, "model") """
+            mlflow.sklearn.log_model(lr, "model")
