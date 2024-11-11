@@ -34,7 +34,7 @@ if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
 
-    remote_server_uri = "http://ec2-54-93-229-40.eu-central-1.compute.amazonaws.com:5000/"
+    remote_server_uri = "http://ec2-18-198-3-133.eu-central-1.compute.amazonaws.com:5000/"
     mlflow.set_tracking_uri(remote_server_uri)
 
     # Read the wine-quality csv file from the URL

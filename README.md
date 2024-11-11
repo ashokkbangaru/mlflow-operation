@@ -38,10 +38,14 @@ pipenv shell
 
 aws configure
 
-mlflow server -h 0.0.0.0 --default-artifact-root s3://mlflowbuc
+mlflow server -h 0.0.0.0 --default-artifact-root s3://mlflowbuck
 
 
 #set uri in your  loacl terminal and in the code:
-set MLFLOW_TRACKING_URI=http://ec2-54-93-229-40.eu-central-1.compute.amazonaws.com:5000/
+
+$env:MLFLOW_TRACKING_URI = "http://ec2-18-198-3-133.eu-central-1.compute.amazonaws.com:5000/"
+$env:MLFLOW_TRACKING_URI
+
+set MLFLOW_TRACKING_URI=http://ec2-18-198-3-133.eu-central-1.compute.amazonaws.com:5000/
 
 ```
